@@ -17,6 +17,8 @@ Download this repository.
 git clone https://github.com/seeker1983/clasp-project-switcher
 ```
 
+Setup your ids in **config.js**
+
 Now you can switch versions 
 ```
 node set_version v2
