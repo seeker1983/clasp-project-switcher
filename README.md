@@ -14,7 +14,7 @@ Install [Git](https://github.com/google/clasp).
 Download this repository.
 
 ```sh
-git clone https://github.com/seeker1983/vongdc
+git clone https://github.com/seeker1983/clasp-project-switcher
 ```
 
 Now you can switch versions 
