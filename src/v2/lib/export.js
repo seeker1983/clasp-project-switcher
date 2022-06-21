@@ -16,6 +16,10 @@ function ExportService(sheet) {
   }
 }
 
+function setTitle(title) {
+  SpreadsheetApp.getActiveSheet().getRange('D1').setValue(title);
+}
+
 function test_ExportService() {
   var xs = new ExportService(SpreadsheetApp.openByUrl(SS_URL).getSheetByName(SHEETNAME));
 
