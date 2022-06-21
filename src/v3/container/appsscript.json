@@ -1,0 +1,22 @@
+{
+  "timeZone": "America/New_York",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "dependencies": {
+    "enabledAdvancedServices": [
+      {
+        "userSymbol": "Drive",
+        "serviceId": "drive",
+        "version": "v2"
+      }
+    ],
+    "libraries": [
+      {
+        "userSymbol": "v2FolderListLib",
+        "version": "0",
+        "libraryId": "1GoB8SKDu_9nVyrtWcGfoWlv0pXM9mr3kvKOjtFxV2nBTNmCsgaphIIHK",
+        "developmentMode": true
+      }
+    ]
+  }
+}
