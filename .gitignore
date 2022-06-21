@@ -2,3 +2,4 @@
 *.sublime*
 vtest
 .clasp.json
+config.js
