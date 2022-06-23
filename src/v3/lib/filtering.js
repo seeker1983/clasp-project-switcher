@@ -2,6 +2,13 @@ function FilterService(sheet) {
   const DATE_COLUMN = 8;
   this.sheet = sheet;
   this.clear = () => {
+    _.range(1, sheet.getLastColumn() + 1).map(
+      column => ! sheet.isColumnHiddenByUser(column) && sheet.getFilter().removeColumnFilterCriteria(column))
+  };
+
+  this.remove = () => {
+    SpreadsheetApp.getActiveSheet().getFilter().getColumnFilterCriteria()
+
     var filter = this.sheet.getFilter();
     filter && filter.remove();
   };

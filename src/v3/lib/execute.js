@@ -1,11 +1,6 @@
 const EXECUTE_HANDLERS = {
-  getExportUrl: sheet => generateExportUrl(sheet),
-  updateListModal: () => updateListModal(),
-  action1: data => console.log(data),
-  action2: data => console.log(data),
-  action3: data => console.log(data),
-  action4: data => console.log(data),
-  action5: data => console.log(data)
+  generateExportUrl,
+  setTitle
 };
 
 function execute(action, data) {

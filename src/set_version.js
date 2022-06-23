@@ -1,5 +1,5 @@
 const fs = require('fs');
-const exec = require('./exec');
+const clasp = require('./clasp');
 
 const version = process.argv[2];
 
@@ -18,22 +18,22 @@ if(! fs.existsSync(version)) {
 var setScriptVersion = (file, scriptId) => fs.writeFileSync(file, JSON.stringify({ scriptId }));
 
 async function updateLib() {
-	setScriptVersion(`${version}/lib/.clasp.json`, config.libraryId);
-	return await exec.clasp(`${version}/lib`);
+	setScriptVersion(`${version}/lib/.clasp.json`, config.production.libraryId);
+	return await clasp.push(`${version}/lib`);
 }
 
 async function updateContainer(containerId) {
 	var manifestFile = `${version}/container/appsscript.json`
 	var manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf-8'));
-	manifest.dependencies.libraries[0].libraryId = config.libraryId;
+	manifest.dependencies.libraries[0].libraryId = config.production.libraryId;
 	fs.writeFileSync(manifestFile, JSON.stringify(manifest, null, 2))
 
 	setScriptVersion(`${version}/container/.clasp.json`, containerId);
-	exec.clasp(`${version}/container`);
+	clasp.push(`${version}/container`);
 }
 
 updateLib();
-config.containerIds.map(updateContainer)
+config.production.containerIds.map(updateContainer)
 
 
 
