@@ -10,7 +10,7 @@ function ExportService(sheet) {
     '&printtitle=false' + 
     '&pagenumbers=true' + //hide optional headers and footers
     '&gridlines=false' + // hide gridlines
-    '&fzr=false';
+    '&fzr=true';
 }
 
 function setTitle(title) {

@@ -33,7 +33,7 @@ async function updateContainer(containerId) {
 }
 
 updateLib();
-config.production.containerIds.map(updateContainer)
+config.production.containerScriptIds.map(updateContainer)
 
 
 

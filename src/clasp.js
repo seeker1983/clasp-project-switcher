@@ -2,18 +2,18 @@ const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
 
-async function clasp(folder, cmd) {
-  const { stdout, stderr } = await exec(`cd ${folder} && echo y | clasp ${cmd}`);
+async function execLog(cmd) {
+  const { stdout, stderr } = await exec(cmd);
   console.log('stdout:', stdout);
   console.log('stderr:', stderr);
 }
 
 async function push(folder) {
-  return await clasp(folder, 'push');
+  return await execLog(`cd ${folder} && echo y | clasp push`);
 }
 
 async function pull(folder) {
-  return await clasp(folder, 'pull');
+  return await execLog(`cd ${folder} && clasp pull`);
 }
 
 module.exports = { push, pull };

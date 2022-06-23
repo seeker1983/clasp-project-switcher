@@ -1,7 +1,7 @@
 module.exports = {
 	production: {
 		libraryId: '1khiuUrNwgvAmUBQGQA0rneRAHNhnK1bqF_UUtn-W0xLjBLD5JOOi5CDR',
-		containerIds : [
+		containerScriptIds : [
 			'1rhDLmLgCUuP99AIw7xManwkaoRLLS1vaDMDui2Sq0eQ8-WhFfLq-LXmI'
 		],
 	},

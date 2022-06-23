@@ -23,8 +23,8 @@ async function loadLibrary() {
 }
 
 async function loadContainer() {
-	setScriptVersion(`${version}/container/.clasp.json`, config.test.containerId);
-	clasp.pull(`${version}/container`);
+	setScriptVersion(`${version}/container/.clasp.json`, config.test.containerScriptId);
+	await clasp.pull(`${version}/container`);
 }
 
 loadLibrary();

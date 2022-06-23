@@ -1,18 +1,26 @@
-function listFolders() {
-  return v2FolderListLib.updateListModal();
+function onOpen() {
+  SpreadsheetApp.getUi().createMenu('BIM Intelligence')
+    .addItem('Mise à jour du tableau', 'displayUpdateListDialog')
+    .addItem('Créer un bordereau', 'displayExportSelectedDialog')
+    .addItem('Supprimer les filtres', 'ClearFilter')
+    .addToUi();
 }
 
-function showExportSelectedDialog() {
+function displayUpdateListDialog() {
+  return v2FolderListLib.displayUpdateListDialog();
+}
+
+function displayExportSelectedDialog() {
   return v2FolderListLib.displayExportSelectedDialog();
 }
 
-function getDownloadUrl() {
-  return v2FolderListLib.generateExportUrl(SpreadsheetApp.getActiveSheet());
-}
 function ClearFilter() {
-  return v2FolderListLib.FilterService(SpreadsheetApp.getActiveSheet());
+  return new v2FolderListLib.FilterService(SpreadsheetApp.getActiveSheet()).clear();
 }
 
-function setTitle(title) {
-  return v2FolderListLib.setTitle(title);
+/* For internal use of dialogs */
+function execute(fn, options) {
+  return v2FolderListLib.execute(fn, options);
 }
+
+
