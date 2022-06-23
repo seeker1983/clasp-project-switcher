@@ -7,6 +7,6 @@ function generateExportUrl(sheet) {
   fs.clear();
   fs.sortNewest();
 
-  return newItems.length > 0 ? new ExportService(sheet).getExportUrl("A3:AA" + (newItems.length + 3).toString()) : false;
+  return newItems.length > 0 ? new ExportService(sheet).getExportUrl("A4:AA" + (newItems.length + 3).toString()) : false;
 }
 
