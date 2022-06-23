@@ -1,6 +1,6 @@
 const EXECUTE_HANDLERS = {
-  generateExportUrl,
-  setTitle
+  generateExportUrl: sheet => generateExportUrl(sheet),
+  setTitle: sheet => setTitle(sheet)
 };
 
 function execute(action, data) {

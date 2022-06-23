@@ -12,7 +12,7 @@
     ],
     "libraries": [
       {
-        "userSymbol": "v2FolderListLib",
+        "userSymbol": "ProductionFolderListLib",
         "version": "0",
         "libraryId": "1GoB8SKDu_9nVyrtWcGfoWlv0pXM9mr3kvKOjtFxV2nBTNmCsgaphIIHK",
         "developmentMode": true

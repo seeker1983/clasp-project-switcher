@@ -7,20 +7,20 @@ function onOpen() {
 }
 
 function displayUpdateListDialog() {
-  return v2FolderListLib.displayUpdateListDialog();
+  return ProductionFolderListLib.displayUpdateListDialog();
 }
 
 function displayExportSelectedDialog() {
-  return v2FolderListLib.displayExportSelectedDialog();
+  return ProductionFolderListLib.displayExportSelectedDialog();
 }
 
 function ClearFilter() {
-  return new v2FolderListLib.FilterService(SpreadsheetApp.getActiveSheet()).clear();
+  return new ProductionFolderListLib.FilterService(SpreadsheetApp.getActiveSheet()).clear();
 }
 
 /* For internal use of dialogs */
 function execute(fn, options) {
-  return v2FolderListLib.execute(fn, options);
+  return ProductionFolderListLib.execute(fn, options);
 }
 
 
