@@ -3,11 +3,11 @@ function ExportService(sheet) {
     'export?exportFormat=pdf&format=pdf' +
     '&gid=' + sheet.getSheetId() + '&id=' + sheet.getParent().getId() +
     '&range=' + range +
-    '&size=A4' +     // paper size
-    '&portrait=true' +   // orientation, false for landscape
+    '&size=A3' +     // paper size
+    '&portrait=false' +   // orientation, false for landscape
     '&fitw=true' +       // fit to width, false for actual size
     '&sheetnames=true' + 
-    '&printtitle=false' + 
+    '&printtitle=true' + 
     '&pagenumbers=true' + //hide optional headers and footers
     '&gridlines=false' + // hide gridlines
     '&fzr=true';

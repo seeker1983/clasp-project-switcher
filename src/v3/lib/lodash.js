@@ -17130,6 +17130,7 @@ function extend_lodash() {
       }
     }));  
   }
+  _.defineGlobal = _.defineLazy;
   
   _.updateLazy = (context, name, value) => (_.defineLazy(context, {name: () => value}), value)
   
