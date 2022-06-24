@@ -3,8 +3,15 @@ function process(sheet) {
   var ksheet = new KSheet(sheet, {skipBefore:1, skipAfter:1});
 
   var rows = ksheet.load();
-  
-  var folderId = sheet.getRange("I1").getRichTextValue().getLinkUrl()
+
+  const FOLDER_NAME_LINK = 'Folder Name Link';
+  var folderColumn = ksheet.findColumn(FOLDER_NAME_LINK);
+  console.log(folderColumn);
+
+  if(folderColumn == 0) 
+    throw('Cannot find column ' + FOLDER_NAME_LINK)
+
+  var folderId = sheet.getRange(1, folderColumn).getRichTextValue().getLinkUrl()
     .replace(/\?.*/, "")
     .replace('https://drive.google.com/drive/folders/','');
   
