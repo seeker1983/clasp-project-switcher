@@ -24,7 +24,7 @@ function displayExportSelectedDialog() {
 }
 
 function ClearFilter() {
-  return new ProductionFolderListLib.FilterService(SpreadsheetApp.getActiveSheet()).clear().sortNewest();
+  return new ProductionFolderListLib.FilterService(SpreadsheetApp.getActiveSheet()).remove().sortNewest();
 }
 
 /* For internal use of dialogs */

@@ -3,7 +3,9 @@ function generateExportUrl(sheet) {
   var newItems = process(sheet);
 
   new FilterService(sheet).remove().sortNewest();
+  var range = sheet.getRange(4, 4, newItems.length, sheet.getLastColumn() - 3).getA1Notation();
 
-  return newItems.length > 0 ? new ExportService(sheet).getExportUrl("A4:AA" + (newItems.length + 3).toString()) : false;
+
+  return newItems.length > 0 ? new ExportService(sheet).getExportUrl(range) : false;
 }
 
