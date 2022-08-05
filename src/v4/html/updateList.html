@@ -1,0 +1,63 @@
+<script src="https://unpkg.com/vue@3.2.33/dist/vue.global.js"></script>
+
+<div id="app">
+  Etat : {{status}}
+  <div v-show='finished'>
+    <input type="button" value="Reset Filter and Close" @click='reset();'>
+    <input type="button" value="Close Without Resetting Filter" @click='close();'>
+  </div>
+</div>
+<style>
+  td  {
+    border: 1px solid black;
+  }
+  input {
+    padding: 5px;
+    margin: 5px 10px 5px 0px;
+  }
+</style>
+
+<script>
+  Vue.createApp({
+    data: () => ({
+      status: "Analyse en cours",
+      name: "Taper ici le titre du bordereau \n" + (new Date()).toString().slice(4,15),
+      link: false,
+      finished: false
+    }),
+    mounted: function() {
+      google.script.run
+        .withFailureHandler(this.afterUpdateFail.bind(this))
+        .withSuccessHandler(this.afterUpdate.bind(this))
+        .execute('<?=action?>')
+    },
+    methods: {
+      reset() {
+        this.status = "Réinitialisation des filtres...";
+        this.finished = false;
+        google.script.run
+          .withFailureHandler(this.close)
+          .withSuccessHandler(this.close)
+          .ClearFilter()
+      },
+      close() {
+        google.script.host.close();
+      },
+      setName() {
+        google.script.run.execute('setTitle', this.name)
+      },
+      afterUpdate(link) {
+        this.finished = true;
+        if(link) {
+          this.status = 'Des nouveaux fichiers ont été trouvés. \n Ils se situent à la fin du tableau.';
+          this.link = link;
+        }
+        else
+          this.status = 'Aucun nouveau fichier n\'a été trouvé.';
+      },
+      afterUpdateFail(error) {
+        this.status = "Error: " + error.message;
+      }
+    },
+  }).mount('#app')
+</script>

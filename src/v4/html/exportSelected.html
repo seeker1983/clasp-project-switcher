@@ -1,0 +1,46 @@
+<script src="https://unpkg.com/vue@3.2.33/dist/vue.global.js"></script>
+
+<div id="app">
+  <div v-show='link'> 
+    Lien vers le bordereau : <a :href='link' target=_blank> {{link}}</a>
+  </div>
+  <div> 
+    Entrer ici le titre du bordereau : <br>
+    <textarea v-model="name" @input="setName()" rows=15 > </textarea>
+  </div>
+</div>
+<style>
+  #app {
+    font-size:18px;
+  }
+  textarea {
+    font-size:16px;
+  }
+  div {
+    padding: 5px;
+    margin: 5px;
+  }
+  td  {
+    border: 1px solid black;
+  }
+  textarea {
+    width: 100%;
+    margin-top: 10px;
+  }
+</style>
+
+<script>
+  Vue.createApp({
+    data: () => ({
+      name: "<?= name ?> \n" + (new Date()).toString().slice(4,15),
+      link: '<?= link ?>'
+    }),
+    mounted: function() {
+    },
+    methods: {
+      setName() {
+        google.script.run.execute('setTitle', this.name);
+      }
+    },
+  }).mount('#app')
+</script>
