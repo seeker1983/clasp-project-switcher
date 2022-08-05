@@ -28,7 +28,6 @@ function process(sheet, action='update') {
       "Last Update date" : item.file.getLastUpdated(),
       "MimeType" : item.file.getMimeType(),
       "Creation Date" : item.file.getDateCreated(),
-      "Import Date" : new Date(),
       "Owner" : item.file.getOwner().getEmail(),
       "Deleted" : item.file.isTrashed(),
   }));
@@ -79,6 +78,7 @@ function process(sheet, action='update') {
 
         /* Insert Items */
         newItems.map((item, index) => {
+          item["Import Date"] = new Date();
           ksheet.appendRow(item);
           Logger.log(`Inserting ${index}/${newItems.length}`);
           logEvent('NEW', item);
